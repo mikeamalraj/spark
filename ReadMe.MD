@@ -49,7 +49,7 @@ While running spark applications, the offset is maintained by spark by commiting
 
 Create lookup index for geolocation caches.
 
-    curl -XPUT 'analytics1:9200/lookup?pretty' -H 'Content-Type: application/json' -d'
+    curl -XPUT 'analytics3:9200/lookup?pretty' -H 'Content-Type: application/json' -d'
     {
     "mappings": {
         "location": {
@@ -68,7 +68,7 @@ Create lookup index for geolocation caches.
 
 Create index template for unil- index
 
-    curl -X PUT "localhost:9200/_template/unil_template" -H 'Content-Type: application/json' -d'
+    curl -X PUT "analytics3:9200/_template/unil_template" -H 'Content-Type: application/json' -d'
      {
       "order":0,
       "version":1,
@@ -206,5 +206,34 @@ Topic splitter application is used to split raw messages (from RawStream) into t
 note the path of output jar file (for future uses). 
 
 
+### Run the application (at Analytics 1)
 
+##### Start StreamProcessor (Spark)
+
+Start StreamProcessor application (on it's own terminal) which will read data from SparkInputStream and publish enriched data into SparkOutPutStream topic. 
+
+To run the application,
+
+    spark-submit --class "StreamProcessor" --master spark://analytics1:7077 /path/to/geostatis-assembly-0.1-SNAPSHOT.jar
+   
+##### Start LocationManager (Spark)
+
+Start LocationManager application (on it's own terminal) which will read data from SparkInputStream and publish enriched data into SparkOutPutStream topic. 
+
+To run the application,
+
+    spark-submit --class "StreamProcessor" --master spark://analytics1:7077 /path/to/geostatis-assembly-0.1-SNAPSHOT.jar
+
+##### Start TestDataGenerator (Java)
+
+Start test data generator to simulate test messages from sample message file (packet_dump.json).
+
+    java -jar /path/to/TestDataGenerator-0.0.1-SNAPSHOT-jar-with-dependencies.jar --timelimit 30 --braceletcount 10000 --file /path/to/packet_dump.json --topic RawStream
+
+##### Start TopicSplitter (Java)
+
+Start topic splitter java application using below command.
+
+    java -jar /path/to/TopicSplitter-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+    
 
