@@ -11,7 +11,7 @@ At analytics 1 machine start Hadoop, Spark, Zookeeper,Kafka and metricbeat servi
     ./start-kafka.sh    
     ./start-metricbeat.sh
     
-At analytics 1 machine start metricbeat
+At analytics 2 machine start metricbeat
 	
     cd scripts
     ./start-metricbeat.sh
