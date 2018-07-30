@@ -22,7 +22,7 @@ We need to run start spark applications from Analytics 1 machine (master machine
 
     git clone git@gitlab.serendio.com:Gary/Geosatis.git
 
-build the application using below command
+then build the application using below command
 
     cd Geosatis
     sbt assembly
