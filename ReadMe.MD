@@ -10,11 +10,11 @@ At analytics 1 machine start Hadoop, Spark, Zookeeper and Kafka services
     ./start-zookeeper.sh    
     ./start-kafka.sh    
     
-At analytics 3 machine start ElasticSearch, Kibana, Logstash, Kafka
+At analytics 3 machine start ElasticSearch, Kibana, Logstash and Kafka services
 
     cd scripts
     ./start-kafka.sh
-	
+
 
 ### Download the source code
 
