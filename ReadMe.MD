@@ -1,6 +1,6 @@
 # Steps to run the application
 
-### Start all services (as serendio user)
+### Start the services (as serendio user)
 
 At analytics 1 machine start Hadoop, Spark, Zookeeper and Kafka services
 
