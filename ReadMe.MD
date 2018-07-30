@@ -2,21 +2,28 @@
 
 ### Start the services (as serendio user)
 
-At analytics 1 machine start Hadoop, Spark, Zookeeper and Kafka services
+At analytics 1 machine start Hadoop, Spark, Zookeeper,Kafka and metricbeat services, 
 
     cd scripts
     ./start-hadoop.sh
     ./start-spark.sh
     ./start-zookeeper.sh    
     ./start-kafka.sh    
+    ./start-metricbeat.sh
     
-At analytics 3 machine start ElasticSearch, Kibana, Logstash and Kafka services
+At analytics 1 machine start metricbeat
+	
+    cd scripts
+    ./start-metricbeat.sh
+    
+At analytics 3 machine start ElasticSearch, Kibana, Logstash, Kafka and metricbeat services
 
     cd scripts
     ./start-kafka.sh
     ./start-elastic.sh
     ./start-kibana.sh
     ./start-logstash.sh
+    ./start-metricbeat.sh
 
 
 ### Download the source code and compile 
