@@ -26,18 +26,6 @@ At analytics 3 machine start ElasticSearch, Kibana, Logstash, Kafka and metricbe
     ./start-metricbeat.sh
 
 
-### Download the source code and compile 
-
-We need to run start spark applications from Analytics 1 machine (master machine). So, login into Analytics 1 machine, clone git repositroy
-
-    git clone git@gitlab.serendio.com:Gary/Geosatis.git
-
-then build the application using below command
-
-    cd Geosatis
-    sbt assembly
-	
-
 ### Create Kafka topics
 
 From analytics1 machine run below commands.
@@ -183,4 +171,30 @@ Create index template for unil- index
       }
     }
     '
+
+### Download the source code and compile 
+
+##### Compile spark code
+
+We need to run start spark applications from Analytics 1 machine (master machine). So, login into Analytics 1 machine, clone git repositroy
+
+    git clone git@gitlab.serendio.com:Gary/Geosatis.git
+
+then build the application using below command
+
+    cd Geosatis
+    sbt assembly
+	
+note the path of output jar file (for future uses).
+
+##### Compile test data generator
+
+Test data generator is used to simulate test messages based on the packet_dump.json file. To compile the test data generator (java) application,
+
+    cd Geosatis
+    mvn clean package
     
+note the path of output jar file (for future uses).    
+
+##### Compile topic splitter
+
