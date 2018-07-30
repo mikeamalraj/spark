@@ -50,4 +50,25 @@ While running spark applications, the offset is maintained by spark by commiting
     hadoop fs -mkdir -p /serendio/checkpoint2
     
 
+### Create Index template and lookup index in ElasticSearch
+
+Create lookup index for geolocation caches.
+
+    curl -XPUT 'analytics1:9200/lookup?pretty' -H 'Content-Type: application/json' -d'
+    {
+    "mappings": {
+        "location": {
+          "properties": {
+            "request": {
+              "type":  "keyword" 
+            },
+            "response": {
+              "type":  "keyword" 
+            }
+          }
+        }
+      }
+    }
+    '
+
 
