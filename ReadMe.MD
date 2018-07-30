@@ -14,6 +14,9 @@ At analytics 3 machine start ElasticSearch, Kibana, Logstash and Kafka services
 
     cd scripts
     ./start-kafka.sh
+    ./start-elastic.sh
+    ./start-kibana.sh
+    ./start-logstash.sh
 
 
 ### Download the source code and compile 
