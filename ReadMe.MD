@@ -241,7 +241,7 @@ Start topic splitter java application using below command.
 
 If you would like to test the application again, make sure to delete kafka topics, checkpoint directories and unil-index.
 
-To delete kafka topics,
+delete kafka topics,
 
     $KAFKA_HOME/bin/kafka-topics.sh --delete --zookeeper analytics1:2181 --topic RawStream
     $KAFKA_HOME/bin/kafka-topics.sh --delete --zookeeper analytics1:2181 --topic DirectStream
