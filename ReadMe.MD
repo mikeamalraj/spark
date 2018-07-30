@@ -46,5 +46,8 @@ From analytics1 machine run below commands.
 
 While running spark applications, the offset is maintained by spark by commiting it into a directory (checkpoint). Make sure it matches the name mentioned in the config.properties file.
 
+    hadoop fs -mkdir -p /serendio/checkpoint
+    hadoop fs -mkdir -p /serendio/checkpoint2
+    
 
 
