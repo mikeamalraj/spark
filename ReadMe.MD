@@ -191,10 +191,20 @@ note the path of output jar file (for future uses).
 
 Test data generator is used to simulate test messages based on the packet_dump.json file. To compile the test data generator (java) application,
 
-    cd Geosatis
+    cd Geosatis/TestDataGenerator
     mvn clean package
     
 note the path of output jar file (for future uses).    
 
 ##### Compile topic splitter
+
+Topic splitter application is used to split raw messages (from RawStream) into two different stream (DirectStream & SparkInputStream). To compile topic splitter,
+
+    cd Geosatis/TestDataGenerator
+    mvn clean package
+    
+note the path of output jar file (for future uses). 
+
+
+
 
