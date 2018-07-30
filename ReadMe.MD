@@ -31,4 +31,14 @@ then build the application using below command
     sbt assembly
 	
 
- 
+### Create Kafka topics
+
+From analytics1 machine run below commands.
+
+    $KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper analytics1:2181 --topic RawStream --replication-factor 1 --partitions 5
+    $KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper analytics1:2181 --topic DirectStream --replication-factor 1 --partitions 5
+    $KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper analytics1:2181 --topic SparkInputStream --replication-factor 1 --partitions 15
+    $KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper analytics1:2181 --topic SparkOutputStream --replication-factor 1 --partitions 15  $KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper analytics1:2181 --topic FilteredStream --replication-factor 1 --partitions 4
+    
+
+
