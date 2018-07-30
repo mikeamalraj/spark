@@ -1,1 +1,1 @@
-# Setup development environment
+# ELK stack installation
