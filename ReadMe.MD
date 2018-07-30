@@ -42,4 +42,9 @@ From analytics1 machine run below commands.
     $KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper analytics1:2181 --topic FilteredStream --replication-factor 1 --partitions 4
     
 
+### Create checkpoint directories at Hadoop
+
+While running spark applications, the offset is maintained by spark by commiting it into a directory (checkpoint). Make sure it matches the name mentioned in the config.properties file.
+
+
 
