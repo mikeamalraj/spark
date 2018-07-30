@@ -71,4 +71,109 @@ Create lookup index for geolocation caches.
     }
     '
 
+Create index template for unil- index
 
+    curl -X PUT "localhost:9200/_template/unil_template" -H 'Content-Type: application/json' -d'
+     {
+      "order":0,
+      "version":1,
+      "index_patterns":[
+         "unil-*"
+      ],
+      "settings" : {
+        "number_of_shards" : 1
+	  },
+      "mappings":{
+         "doc":{
+            "dynamic":"true",
+            "numeric_detection":true,
+            "dynamic_templates":[
+               {
+                  "payload":{
+                     "path_match":"payload.*",
+                     "path_unmatch":"payload.cells",
+                     "mapping":{
+                        "type":"long"
+                     }
+                  }
+               }
+            ],
+            "properties":{
+               "@timestamp":{
+                  "type":"date"
+               },
+               "rawToHRTime":{
+                  "type":"date"
+               },
+               "serverTime":{
+                  "type":"date",
+                  "format":"yyyy-MM-dd HH:mm:ss"
+               },
+               "generationTime":{
+                  "type":"date",
+                  "format":"yyyy-MM-dd HH:mm:ss",
+                  "ignore_malformed":true
+               },
+               "rawToHRTimeNS":{
+                  "type":"long"
+               },
+               "coordinate":{
+                  "type":"geo_point"
+               },
+               "payload.servCell":{
+                  "type":"object"
+               },
+               "payload.gpsMoo":{
+                  "type":"object"
+               },
+               "payload.unregMoo":{
+                  "type":"object"
+               },
+               "payload.beaconMoo":{
+                  "type":"object"
+               },
+               "payload.devices":{
+                  "type":"object"
+               },
+               "payload.dsSleep":{
+                  "type":"object"
+               },
+               "payload.svinfo":{
+                  "type":"object"
+               },
+               "flags":{
+                  "type":"keyword"
+               },
+               "serial":{
+                  "type":"keyword"
+               },
+               "type":{
+                  "type":"keyword"
+               },
+               "unitId":{
+                  "type":"keyword"
+               },
+               "satis_id":{
+                  "type":"keyword"
+               },
+               "startTime":{
+                  "type":"date"
+               },
+               "sparkStartTime":{
+                  "type":"date"
+               },
+               "sparkEndTime":{
+                  "type":"date"
+               },
+			   "sparkElapsedTime":{
+                  "type":"long"
+               },
+			   "elapsedTime":{
+                  "type":"long"
+               }
+            }
+         }
+      }
+    }
+    '
+    
