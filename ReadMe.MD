@@ -237,3 +237,23 @@ Start topic splitter java application using below command.
     java -jar /path/to/TopicSplitter-0.0.1-SNAPSHOT-jar-with-dependencies.jar
     
 
+### Notes:
+
+If you would like to test the application again, make sure to delete kafka topics, checkpoint directories and unil-index.
+
+To delete kafka topics,
+
+    $KAFKA_HOME/bin/kafka-topics.sh --delete --zookeeper analytics1:2181 --topic RawStream
+    $KAFKA_HOME/bin/kafka-topics.sh --delete --zookeeper analytics1:2181 --topic DirectStream
+    $KAFKA_HOME/bin/kafka-topics.sh --delete --zookeeper analytics1:2181 --topic SparkInputStream
+    $KAFKA_HOME/bin/kafka-topics.sh --delete --zookeeper analytics1:2181 --topic SparkOutputStream
+    $KAFKA_HOME/bin/kafka-topics.sh --delete --zookeeper analytics1:2181 --topic FilteredStream
+
+then create the topics again as mentioned earlier.
+
+Clear checkpoint directories,
+
+    hadoop fs -rm -r /serendio/checkpoint/*
+    hadoop fs -rm -r /serendio/checkpoint2/*
+    
+
