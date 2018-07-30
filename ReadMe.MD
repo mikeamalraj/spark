@@ -1,9 +1,20 @@
 # Steps to run the application
 
-## Download the source code
+### Start all services (as serendio user)
 
-We need to run start applications from Analytics 1 machine (master machine). So, login into Analytics 1 machine, clone git repositroy
+* At analytics 1 machine start Hadoop, Spark, Zookeeper and Kafka services
+
+	cd scripts
+	./start-hadoop.sh
+	./start-spark.sh
+	./start-zookeeper.sh    
+	./start-kafka.sh    
+
+### Download the source code
+
+We need to run start spark applications from Analytics 1 machine (master machine). So, login into Analytics 1 machine, clone git repositroy
 
     gti clone git@gitlab.serendio.com:Gary/Geosatis.git
+
 
  
