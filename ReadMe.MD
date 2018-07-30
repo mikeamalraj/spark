@@ -1,1 +1,1 @@
-1. # ELK stack installation
+# ELK stack installation
