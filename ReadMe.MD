@@ -1,1 +1,1 @@
-# ELK stack installation
+# Steps to run the application
