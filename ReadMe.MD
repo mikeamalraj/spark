@@ -303,8 +303,29 @@ then run `source ~/.bashrc`
 
 To verify spark installtion run `spark-shell`.
 
+**At Analytics1**
 
+Generate ssh key to access slave machines without having to provide password.
+
+    ssh-keygen -t rsa
     
+Copy generated ssh key to `Analytics2 & Analytics3`
+
+    ssh-copy-id serendio@analytics2
+    ssh-copy-id serendio@analytics3
+    
+OR
+
+Download `id_rsa.pub` file from path `~/.ssh/id_rsa.pub` (Analytics 1 machine). Then upload `id_rsa.pub` to `analytics2 & analytics3` machine. 
+
+Login to analytics2, analytics3 and run `cat id_rsa.pub >> .ssh/authorized_keys`
+
+
+
+
+
+
+
 
 
 
