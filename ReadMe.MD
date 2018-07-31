@@ -252,7 +252,29 @@ Run below command to format Namenode,
 
     hadoop namenode -format
     
-Start hadoop services,
+To hadoop services, `cd $HADOOP_HOME/sbin`
+
+Start Namenode, Datanode service
+
+    ./start-dfs.sh
+    
+Start Resourcemanager, Nodemanager
+
+    ./start-yarn.sh
+    
+ 
+ **Add firewall rules in GCP**
+ 
+    tcp:9000
+    tcp:5025
+    tcp:5030
+    tcp:50070
+ 
+ 
+ To verify hadoop cluster set-up, check url 'http://analytics1:50070'
+ 
+ 
+ 
 
     
 
