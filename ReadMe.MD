@@ -554,3 +554,15 @@ Download ElasticSearch,
 Verify elasticsearch setup
 
     curl -XGET 'http://analytics1:9200/_cluster/state?pretty'
+
+
+## 9. Cerebro installation [ElasticSearch Monitoring tool]
+
+**At Analytics1**
+
+Download and install cerebro monitoring tool.
+
+    cd ~/downloads
+    
+    
+
