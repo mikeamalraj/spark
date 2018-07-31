@@ -366,4 +366,23 @@ Start spark cluster, `cd $SPARK_HOME/sbin`
     ./start-all.sh
     
 
+To verify spark cluter setup, run `jps` at `analytics1` machine. It should show,
+
+    Master
+    Worker
+
+At `analytics2, analytics3` machine run `jps`.
+
+    Worker
+
+Check spark WebUI - http://analytics1:50070. It should show all 3 machines running.
+
+
+
+
+   
+
+
+
+
 
