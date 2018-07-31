@@ -104,7 +104,18 @@ Set environment variable in `~/.bashrc` file
     
 then run `source ~/.bashrc`
 
+
+## 4. Git installation
+
+To install git run,
+
+    sudo apt-get install git
     
+
+## 5. Hadoop installation
+
+
+
 
 
 
