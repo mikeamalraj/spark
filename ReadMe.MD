@@ -157,13 +157,16 @@ Add slave host at slaves file, run `sudo vi slaves` then add below line
 
 Add below lines in `core-site.xml`, run `sudo vi core-site.xml`
 
+```
     <property>
         <name>fs.defaultFS</name>
 	<value>hdfs://analytics1:9000</value>
     </property>
+```
 
 Add below lines in `hdfs-site.xml`, run `sudo vi hdfs-site.xml`
-    
+ 
+ ```
     <property>
 	<name>dfs.replication</name>
 	<value>3</value>
@@ -176,7 +179,8 @@ Add below lines in `hdfs-site.xml`, run `sudo vi hdfs-site.xml`
 	<name>dfs.datanode.data.dir</name>
 	<value>file:/opt/hadoop/datanode</value>
      </property>
-    
+ ```
+ 
 Create directories to store information about namenode and datanode
 
     sudo mkdir /opt/hadoop/namenode
