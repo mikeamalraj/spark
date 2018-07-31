@@ -563,6 +563,16 @@ Verify elasticsearch setup
 Download and install cerebro monitoring tool.
 
     cd ~/downloads
+    wget https://github.com/lmenezes/cerebro/releases/download/v0.7.3/cerebro-0.7.3.tgz
+    tar -xzf cerebro-0.7.3.tgz
+    sudo mkdir /opt/cerebro
+    sudo mv cerebro-0.7.3 /opt/cerebro/
     
+start cerebro,
+   
+    cd /opt/cerebro/cerebro-0.7.3
+    bin/cerebro -Dhttp.port=9001 -Dhttp.address=0.0.0.0
     
+Check cerebro in url -  http://analytics1:9001
+
 
