@@ -168,16 +168,16 @@ Add below lines in `hdfs-site.xml`, run `sudo vi hdfs-site.xml`
  
  ```
     <property>
-	<name>dfs.replication</name>
-	<value>3</value>
+        <name>dfs.replication</name>
+        <value>3</value>
     </property>
     <property>
-	<name>dfs.namenode.name.dir</name>
-	<value>file:/opt/hadoop/namenode</value>
+        <name>dfs.namenode.name.dir</name>
+        <value>file:/opt/hadoop/namenode</value>
      </property>
      <property>
-	<name>dfs.datanode.data.dir</name>
-	<value>file:/opt/hadoop/datanode</value>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:/opt/hadoop/datanode</value>
      </property>
  ```
  
