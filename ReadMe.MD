@@ -274,7 +274,35 @@ Start Resourcemanager, Nodemanager
  To verify hadoop cluster set-up, check url http://analytics1:50070.
  
  
+ ## 6. Spark installation
  
+ Install spark on all three instances.
+ 
+ **At Analytics1, Analytics2, Analytics3**
+ 
+Add host name, `sudo vi /etc/host` 
+   
+    10.128.0.2 analytics1
+    10.138.0.2 analytics2
+    10.142.0.2 analytics3
+    
+Download spark
+ 
+    cd ~/downloads
+    wget http://www-us.apache.org/dist/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz
+    tar -xzf spark-2.3.0-bin-hadoop2.7.tgz
+    sudo mkdir /opt/spark
+    sudo mv spark-2.3.0-bin-hadoop2.7 /opt/spark/
+
+Set spark environment variable, `vi ~/.bashrc`
+
+    export SPARK_HOME=/opt/spark/spark-2.3.0-bin-hadoop2.7
+    export PATH=$SPARK_HOME/bin:$PATH   
+
+then run `source ~/.bashrc`
+
+To verify spark installtion run `spark-shell`.
+
 
     
 
