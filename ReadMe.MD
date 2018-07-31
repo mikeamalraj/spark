@@ -476,4 +476,81 @@ Change owenership of kafka directory
     sudo chown -R serendio:serendio /opt/kafka
 
 
+## 8. ElasticSearch installation
 
+Install ElasticSearch on all three machines.
+
+Download ElasticSearch,
+
+    cd ~/downloads
+    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.deb
+ 
+ Install ElasticSearch
+ 
+     sudo dpkg -i elasticsearch-6.2.4.deb
+     sudo update-rc.d elasticsearch defaults 95 10
+     
+ Add firewall rules in GCP
+ 
+     9200 - elasticsearch instance
+     9001 -  elasticsearch monitor
+     
+  **At Analytics1 machine**
+  
+  Update configurations,
+  
+      sudo -i
+      cd /etc/elasticsearch/
+      
+  Edit `elasticsearch.yml` file `vi elasticsearch.yml`
+    
+     cluster.name: geosatis
+     node.name: analytics1
+     network.host: ["analytics1","localhost"]
+     discovery.zen.ping.unicast.hosts: ["analytics1", "analytics2", "analytics3"]
+  
+  Start elasticsearch serivce 
+  
+     sudo -i service elasticsearch start
+     
+     
+ **At Analytics2 machine**
+  
+  Update configurations,
+  
+      sudo -i
+      cd /etc/elasticsearch/
+      
+  Edit `elasticsearch.yml` file `vi elasticsearch.yml`
+    
+     cluster.name: geosatis
+     node.name: analytics2
+     network.host: ["analytics2","localhost"]
+     discovery.zen.ping.unicast.hosts: ["analytics1", "analytics2", "analytics3"]
+  
+  Start elasticsearch serivce 
+  
+     sudo -i service elasticsearch start
+     
+     
+ **At Analytics3 machine**
+  
+  Update configurations,
+  
+      sudo -i
+      cd /etc/elasticsearch/
+      
+  Edit `elasticsearch.yml` file `vi elasticsearch.yml`
+    
+     cluster.name: geosatis
+     node.name: analytics3
+     network.host: ["analytics3","localhost"]
+     discovery.zen.ping.unicast.hosts: ["analytics1", "analytics2", "analytics3"]
+  
+  Start elasticsearch serivce 
+  
+     sudo -i service elasticsearch start
+
+Verify elasticsearch setup
+
+    curl -XGET 'http://analytics1:9200/_cluster/state?pretty'
