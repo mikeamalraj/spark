@@ -1,5 +1,6 @@
-# Steps to run the application
+# Tools and Software installation
 
-### Start the services (as serendio user)
+
+**General note**
 
 
