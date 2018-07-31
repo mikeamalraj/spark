@@ -252,7 +252,7 @@ Run below command to format Namenode,
 
     hadoop namenode -format
     
-To hadoop services, `cd $HADOOP_HOME/sbin`
+To start hadoop services, `cd $HADOOP_HOME/sbin`
 
 Start Namenode, Datanode service
 
