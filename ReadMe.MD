@@ -271,7 +271,7 @@ Start Resourcemanager, Nodemanager
     tcp:50070
  
  
- To verify hadoop cluster set-up, check url http://analytics1:50070 - automatic!
+ To verify hadoop cluster set-up, check url http://analytics1:50070.
  
  
  
