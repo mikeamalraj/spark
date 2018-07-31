@@ -79,6 +79,31 @@ Set environment variable in `~/.bashrc` file
 then run `source ~/.bashrc`
 
 
+## 3. Maven installation
+
+Install apache maven on `analytics1` machine which is used to compile java code (TestDataGenerator & TopicSplitter).
+
+Download sbt,
+
+    cd /home/serendio/downloads
+    wget http://www-us.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
+    
+Extract tar file
+
+    tar -xzf apache-maven-3.5.4-bin.tar.gz
+    
+Move extracted mvn to opt folder
+
+    sudo mkdir /opt/maven
+    sudo mv apache-maven-3.5.4 /opt/maven
+    
+Set environment variable in `~/.bashrc` file
+
+    export MAVEN_HOME=/opt/maven/apache-maven-3.5.3
+    export PATH=$MAVEN_HOME/bin:$PATH
+    
+then run `source ~/.bashrc`
+
     
 
 
