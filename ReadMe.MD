@@ -52,7 +52,37 @@ To verify java path, run `echo $JAVA_HOME`.
 
     /opt/java/jdk1.8.0_171
     
+
+## 1. sbt installation
+
+Install sbt on `analytics1` machine which is used to compile spark source code.
+
+Download sbt,
+
+    cd /home/serendio/downloads
+    wget https://piccolo.link/sbt-0.13.17.tgz
     
+Extract tar file
+
+    tar -xzf sbt-0.13.17.tgz
+    
+Move extracted sbt to opt folder
+
+    sudo mkdir /opt/sbt
+    sudo mv sbt-0.13.17 /opt/sbt
+    
+Set environment variable in `~/.bashrc` file
+
+    export SBT_HOME=/opt/sbt/sbt-0.13.17
+    export PATH=$SBT_HOME/bin:$PATH
+    
+then run `source ~/.bashrc`
+
+
+    
+
+
+
     
 
     
