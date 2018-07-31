@@ -650,3 +650,20 @@ Edit `pipelines.yml` file
 Create `conf.d` folder then add logstash pipelines [directstream.conf & sparkoutputstream.conf] from git repository.
      
 
+## 12. Metricbeat installation
+
+Install metricbeat on all three instances.
+
+    curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.3.0-amd64.deb
+    sudo dpkg -i metricbeat-6.3.0-amd64.deb
+    
+Edit 'metricbeat.yml' file ,`cd /etc/metricbeat`
+
+    setup.dashboards.enabled: true
+    setup.kibana:
+        host: "analytics3:5601"
+    output.elasticsearch:
+        hosts: ["analytics3:9200"]
+    xpack.monitoring.enabled: true
+    
+	
