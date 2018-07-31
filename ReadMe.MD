@@ -483,11 +483,11 @@ Install ElasticSearch on all three machines.
 Download ElasticSearch,
 
     cd ~/downloads
-    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.deb
+    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.3.0.deb
  
  Install ElasticSearch
  
-     sudo dpkg -i elasticsearch-6.2.4.deb
+     sudo dpkg -i elasticsearch-6.3.0.deb
      sudo update-rc.d elasticsearch defaults 95 10
      
  Add firewall rules in GCP
@@ -508,6 +508,14 @@ Download ElasticSearch,
      node.name: analytics1
      network.host: ["analytics1","localhost"]
      discovery.zen.ping.unicast.hosts: ["analytics1", "analytics2", "analytics3"]
+     xpack.security.enabled: false
+     xpack.monitoring.enabled: true
+     xpack.monitoring.collection.enabled: true
+     xpack.monitoring.exporters:
+        geosatis:
+                type: http
+                host: ["http://analytics1:9200"]
+
   
   Start elasticsearch serivce 
   
@@ -527,6 +535,13 @@ Download ElasticSearch,
      node.name: analytics2
      network.host: ["analytics2","localhost"]
      discovery.zen.ping.unicast.hosts: ["analytics1", "analytics2", "analytics3"]
+     xpack.security.enabled: false
+     xpack.monitoring.enabled: true
+     xpack.monitoring.collection.enabled: true
+     xpack.monitoring.exporters:
+        geosatis:
+                type: http
+                host: ["http://analytics2:9200"]
   
   Start elasticsearch serivce 
   
@@ -546,6 +561,13 @@ Download ElasticSearch,
      node.name: analytics3
      network.host: ["analytics3","localhost"]
      discovery.zen.ping.unicast.hosts: ["analytics1", "analytics2", "analytics3"]
+     xpack.security.enabled: false
+     xpack.monitoring.enabled: true
+     xpack.monitoring.collection.enabled: true
+     xpack.monitoring.exporters:
+        geosatis:
+                type: http
+                host: ["http://analytics3:9200"]
   
   Start elasticsearch serivce 
   
