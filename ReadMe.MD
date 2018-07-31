@@ -186,10 +186,42 @@ Create directories to store information about namenode and datanode
     sudo mkdir /opt/hadoop/namenode
     sudo mkdir /opt/hadoop/datanode
     
+Create `mapred-site.xml` file. 
 
+    sudo mv mapred-site.xml.template mapred-site.xml
+  
+Add below lines in `mapred-site.xml`, run `sudo vi mapred-site.xml`
 
+```
+  <property>
+      <name>mapreduce.framework.name</name>
+      <value>yarn</value>
+   </property>
 
+```
 
-    
+Add below lines in `yarn-site.xml`, run `sudo vi yarn-site.xml`
 
-    
+```
+   <property>
+      <name>yarn.nodemanager.aux-services</name>
+      <value>mapreduce_shuffle</value>
+   </property>
+   <property>
+      <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+      <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
+    <property>
+       <name>yarn.resourcemanager.resource-tracker.address</name>
+       <value>analytics1:8025</value>
+    </property>
+    <property>
+       <name>yarn.resourcemanager.scheduler.address</name>
+       <value>analytics1:8030</value>
+     </property>
+     <property>
+        <name>yarn.resourcemanager.address</name>
+        <value>analytics1:8050</value>
+      </property>
+```
+
