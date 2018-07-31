@@ -143,7 +143,7 @@ verify hadoop installation `hadoop version`
 
 **At Analytics1 machine**
 
-Run below commands, `cd $HADOOP_HOME/etc/hadoop`
+Go to hadoop configurations folder - `cd $HADOOP_HOME/etc/hadoop`
 
 Add master host at master file, run `sudo vi master` then add below line
 
@@ -222,6 +222,6 @@ Add below lines in `yarn-site.xml`, run `sudo vi yarn-site.xml`
      <property>
         <name>yarn.resourcemanager.address</name>
         <value>analytics1:8050</value>
-      </property>
+     </property>
 ```
 
