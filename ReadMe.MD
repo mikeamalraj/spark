@@ -321,6 +321,7 @@ Download `id_rsa.pub` file from path `~/.ssh/id_rsa.pub` (Analytics 1 machine). 
 Login to analytics2, analytics3 and run `cat id_rsa.pub >> .ssh/authorized_keys`
 
 
+
 To verify the setup run below commands at `analytics1` machine
 
     ssh serendio@analytics2
@@ -371,7 +372,7 @@ To verify spark cluter setup, run `jps` at `analytics1` machine. It should show,
     Master
     Worker
 
-At `analytics2, analytics3` machine run `jps`.
+At `analytics2, analytics3` machine run `jps`. It should show,
 
     Worker
 
