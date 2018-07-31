@@ -25,4 +25,14 @@ Move extracted java into opt foler
     sudo mkdir /opt/java
     sudo mv jdk1.8.0_171 /opt/java
     
+Install & set default java version
+
+    sudo update-alternatives --install /usr/bin/java java /opt/java/jdk1.8.0_171/bin/java 1
+    sudo update-alternatives --install /usr/bin/javac javac /opt/java/jdk1.8.0_171/bin/javac 1
+  
+   if more than one java version installed
+
+    sudo update-alternatives --config java
+    sudo update-alternatives --config javac
+
     
