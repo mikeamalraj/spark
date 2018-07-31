@@ -439,7 +439,7 @@ Go to Kafka installation path, `cd $KAFKA_HOME/config`
     
 Edit kafka broker properties, `sudo vi server.properties`
 
-    broker.id=0
+    broker.id=1
     delete.topic.enable = true
     listeners=PLAINTEXT://:9092
     advertised.listeners=PLAINTEXT://analytics2:9092
@@ -460,7 +460,7 @@ Go to Kafka installation path, `cd $KAFKA_HOME/config`
     
 Edit kafka broker properties, `sudo vi server.properties`
 
-    broker.id=0
+    broker.id=2
     delete.topic.enable = true
     listeners=PLAINTEXT://:9092
     advertised.listeners=PLAINTEXT://analytics3:9092
