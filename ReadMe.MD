@@ -7,3 +7,4 @@
 1. Installation folder: `/opt/`
 1. Add custom environment variables in `~/.bashrc` file
 
+## 1. Java installation
