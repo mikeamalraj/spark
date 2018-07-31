@@ -25,14 +25,34 @@ Move extracted java into opt foler
     sudo mkdir /opt/java
     sudo mv jdk1.8.0_171 /opt/java
     
-Install & set default java version
+Install java
 
     sudo update-alternatives --install /usr/bin/java java /opt/java/jdk1.8.0_171/bin/java 1
     sudo update-alternatives --install /usr/bin/javac javac /opt/java/jdk1.8.0_171/bin/javac 1
   
-   if more than one java version installed
+Set default java, if more than one java version installed.
 
     sudo update-alternatives --config java
     sudo update-alternatives --config javac
+
+Set java environment variable. Open `~/.bashrc` file and add below lines
+
+    export JAVA_HOME=/opt/java/jdk1.8.0_171
+	export PATH=$JAVA_HOME/bin:$PATH
+
+then run `source ~/.bashrc`.
+
+To verify java installation, run `java -version`. 
+
+    java version "1.8.0_171"
+    Java(TM) SE Runtime Environment (build 1.8.0_171-b11)
+	Java HotSpot(TM) 64-Bit Server VM (build 25.171-b11, mixed mode)
+
+To verify java path, run `echo $JAVA_HOME`.
+
+    /opt/java/jdk1.8.0_171
+    
+    
+    
 
     
