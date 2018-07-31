@@ -665,5 +665,31 @@ Edit 'metricbeat.yml' file ,`cd /etc/metricbeat`
     output.elasticsearch:
         hosts: ["analytics3:9200"]
     xpack.monitoring.enabled: true
+    	
+Edit kafka & System modules `cd /modules.d`
+ 
+kafka modules - `sudo vi kafka.yml`
+
+    - module: kafka
+    hosts: ["analytics1:9092"]
+  
+system modules - `sudo vi system.yml`
+  
+   ```- module: system
+  period: 1m
+  metricsets:
+    - filesystem
+    - fsstat
+    - cpu
+    - core
+    - load
+    - memory
+    - network
+    - process
+```
+
+Start metricbeat,
+
+    sudo service metricbeat start
     
-	
+    
