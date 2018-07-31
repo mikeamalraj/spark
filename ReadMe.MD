@@ -114,6 +114,52 @@ To install git run,
 
 ## 5. Hadoop installation
 
+Hadoop needs to be installed on all three instances.
+
+**At Analytics1, Analytics2, Analytics3**
+
+Download hadoop,
+ 
+    cd ~/downloads
+    wget http://www-us.apache.org/dist/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz
+    tar -xzf hadoop-2.9.1.tar.gz
+    sudo mkdir /opt/hadoop
+    sudo mv hadoop-2.9.1 /opt/hadoop/
+
+Set hadoop environment variables in `~/.bashrc` file
+
+    export HADOOP_HOME=/opt/hadoop/hadoop-2.7.6
+    export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+    export HADOOP_MAPRED_HOME=$HADOOP_HOME
+    export HADOOP_COMMON_HOME=$HADOOP_HOME
+    export HADOOP_HDFS_HOME=$HADOOP_HOME
+    export YARN_HOME=$HADOOP_HOME
+    export PATH=$PATH:$HADOOP_HOME/bin
+    export PATH=$PATH:$HADOOP_HOME/sbin
+    
+then run `source ~/.bashrc`
+
+verify hadoop installation `hadoop version`
+
+**At Analytics1 machine**
+
+Run below commands, `cd $HADOOP_HOME/etc/hadoop`
+
+Add master host at master file, run `sudo vi master` then add below line
+
+    analytics1
+
+Add slave host at slaves file, run `sudo vi slaves` then add below line
+   
+    analytics1
+    analytics2
+    analytics3
+
+
+
+
+    
+    
 
 
 
