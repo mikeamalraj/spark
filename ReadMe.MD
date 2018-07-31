@@ -225,3 +225,38 @@ Add below lines in `yarn-site.xml`, run `sudo vi yarn-site.xml`
      </property>
 ```
 
+**At Analytics2, Analytics3 machine**
+
+
+Go to hadoop configuration folder - `cd $HADOOP_HOME/etc/hadoop`
+
+copy `core-site.xml, hdfs-site.xml, mapred-site.xml, yarn-site.xml` from `analytics1`.
+
+Create directory for datanode
+
+    sudo mkdir /opt/hadoop/datanode
+    
+    
+**At Analytics1, Analytics2, Analytics3**
+
+Change ownership of hadoop folders,
+
+    sudo chown -R serendio:serendio /opt/hadoop/hadoop-2.9.1
+    sudo chown -R serendio:serendio datanode
+    sudo chown -R serendio:serendio namenode
+
+
+**At Analytics1**
+
+Run below command to format Namenode,
+
+    hadoop namenode -format
+    
+Start hadoop services,
+
+    
+
+
+
+
+
