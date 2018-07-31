@@ -321,13 +321,49 @@ Download `id_rsa.pub` file from path `~/.ssh/id_rsa.pub` (Analytics 1 machine). 
 Login to analytics2, analytics3 and run `cat id_rsa.pub >> .ssh/authorized_keys`
 
 
+To verify the setup run below commands at `analytics1` machine
 
+    ssh serendio@analytics2
+    ssh serendio@analytics3
+    
+Edit spark configurations for cluster setup, go to spark configuration directory `cd $SPARK_HOME/conf`
 
+Create `spark-env.sh` file, `sudo cp spark-env.sh.template spark-env.sh`. Then `sudo vi spark-env.sh`.
 
+    export SPARK_MASTER_HOST = 'analytics1'
+    
+Create `slaves` file, `sudo cp slaves.template slaves`. Then `sudo vi slaves` & add below lines
 
+    analytics1
+    analytics2
+    analytics3
 
+Create `spark-defaults.conf` file, `sudo cp spark-defaults.conf.template spark-defaults.conf`. Then `sudo vi spark-defaults.conf` & add below lines
 
+    spark.eventLog.enabled          true
+    spark.eventLog.dir              file:/opt/spark-events
+    spark.history.fs.logDirectory   file:/opt/spark-events
 
+Create `/opt/spark-events` directory.
 
+    sudo mkdir /opt/spark-events
+    sudo chown -R serendio:serendio /opt/spark-events
+        
+Change owenership of spark directory
+
+    sudo chown -R serendio:serendio /opt/spark/spark-2.3.0-bin-hadoop2.7
+   
+Add firewall rules in GCP
+
+    4040 to 4050  - Spark context web UI
+    8080   - spark master web ui port
+    7077   - spark master port
+    18080  - Spark history server
+    8081   - Workers Web UI
+
+Start spark cluster, `cd $SPARK_HOME/sbin`
+
+    ./start-all.sh
+    
 
 
