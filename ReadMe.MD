@@ -378,13 +378,102 @@ Start Resourcemanager, Nodemanager
  To verify hadoop cluster set-up, check url http://analytics1:50070.
  
  
+## 7. Kafka installation
 
+Install kafka on all three machines.
 
+**At Analytics1, Analytics2, Analytics3**
 
+Download Kafka
 
+    cd ~/downloads
+    wget http://www-eu.apache.org/dist/kafka/1.1.0/kafka_2.11-1.1.0.tgz
+    tar -xzf kafka_2.11-1.1.0.tgz
+    sudo mkdir /opt/kafka
+    sudo mv kafka_2.11-1.1.0 /opt/kafka
+    
+Set kafka environment variables,
+
+    vi ~/.bashrc
+    export KAFKA_HOME=/opt/kafka/kafka_2.11-1.1.0
+    
+then `source ~/.bashrc`
+
+Add firewall rules in GCP
+
+    2181 - zookeeper
+    9092 - kafka broker
+    
+**At Analytics1 machine**
+    
+Go to Kafka installation path, `cd $KAFKA_HOME/config`
+
+Edit zookeeper properties, `sudo vi zookeeper.properties`
    
+    dataDir=/opt/kafka/zookeeper
 
+Create `/opt/kafka/zookeeper` directory
 
+    sudo mkdir /opt/kafka/zookeeper
+    
+Edit kafka broker properties, `sudo vi server.properties`
+
+    broker.id=0
+    delete.topic.enable = true
+    listeners=PLAINTEXT://:9092
+    advertised.listeners=PLAINTEXT://analytics1:9092
+    log.dirs=/opt/kafka/kafka-logs
+    zookeeper.connect=analytics1:2181
+    
+Create `/opt/kafka/kafka-logs` directory
+ 
+    sudo mkdir /opt/kafka/kafka-logs
+			
+Change owenership of kafka directory
+
+    sudo chown -R serendio:serendio /opt/kafka
+    
+**At Analytics2 machine**
+    
+Go to Kafka installation path, `cd $KAFKA_HOME/config`
+    
+Edit kafka broker properties, `sudo vi server.properties`
+
+    broker.id=0
+    delete.topic.enable = true
+    listeners=PLAINTEXT://:9092
+    advertised.listeners=PLAINTEXT://analytics2:9092
+    log.dirs=/opt/kafka/kafka-logs
+    zookeeper.connect=analytics1:2181
+    
+Create `/opt/kafka/kafka-logs` directory
+ 
+    sudo mkdir /opt/kafka/kafka-logs
+			
+Change owenership of kafka directory
+
+    sudo chown -R serendio:serendio /opt/kafka
+
+**At Analytics3 machine**
+    
+Go to Kafka installation path, `cd $KAFKA_HOME/config`
+    
+Edit kafka broker properties, `sudo vi server.properties`
+
+    broker.id=0
+    delete.topic.enable = true
+    listeners=PLAINTEXT://:9092
+    advertised.listeners=PLAINTEXT://analytics3:9092
+    log.dirs=/opt/kafka/kafka-logs
+    zookeeper.connect=analytics1:2181
+    
+Create `/opt/kafka/kafka-logs` directory
+ 
+    sudo mkdir /opt/kafka/kafka-logs
+			
+Change owenership of kafka directory
+
+    sudo chown -R serendio:serendio /opt/kafka
 
 
 
