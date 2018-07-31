@@ -598,3 +598,55 @@ start cerebro,
 Check cerebro in url -  http://analytics1:9001
 
 
+## 10. Kibana installation
+
+Install Kibana on `Analytics 3` machine.
+
+    wget https://artifacts.elastic.co/downloads/kibana/kibana-6.3.0-amd64.deb
+    sudo dpkg -i kibana-6.3.0-amd64.deb
+    sudo update-rc.d kibana defaults 95 10
+    sudo -i service kibana start
+ 
+Edit kibana cofigurations `sudo vi /etc/kibana/kibana.yml`
+
+    server.host: "analytics3"
+    server.name: "analytics3"
+    elasticsearch.url: "http://analytics3:9200"
+    xpack.security.enabled: false
+    xpack.monitoring.enabled: true
+    xpack.monitoring.elasticsearch.url: "http://analytics3:9200"
+    xpack.monitoring.kibana.collection.enabled: true
+
+    
+## 11. Logstash installation
+
+Install Logstash on `Analytics 3` machine.
+
+     wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+     sudo apt-get install apt-transport-https
+     echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
+     sudo apt-get update && sudo apt-get install logstash
+     sudo service logstash start
+     
+
+Edit Logstash cofigurations `sudo vi /etc/kibana/logstash.yml`
+
+    xpack.monitoring.enabled: true
+    xpack.monitoring.elasticsearch.url: "http://analytics3:9200"
+    xpack.monitoring.elasticsearch.username:
+    xpack.monitoring.elasticsearch.password:
+
+Edit `pipelines.yml` file
+
+```
+- pipeline.id: directstream
+  path.config: "/etc/logstash/conf.d/directstream.conf"
+  pipeline.workers: 5
+- pipeline.id: sparkoutputstream
+  path.config: "/etc/logstash/conf.d/sparkoutputstream.conf"
+  pipeline.workers: 5
+```
+
+Create `conf.d` folder then add logstash pipelines [directstream.conf & sparkoutputstream.conf] from git repository.
+     
+
