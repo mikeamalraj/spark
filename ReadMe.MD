@@ -8,3 +8,7 @@
 1. Add custom environment variables in ~/.bashrc file
    1. Item 3a
    1. Item 3b
+
+
+I think you should use an
+`<addr>` element here instead.
