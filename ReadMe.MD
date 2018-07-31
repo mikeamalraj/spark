@@ -53,7 +53,7 @@ To verify java path, run `echo $JAVA_HOME`.
     /opt/java/jdk1.8.0_171
     
 
-## 1. sbt installation
+## 2. sbt installation
 
 Install sbt on `analytics1` machine which is used to compile spark source code.
 
